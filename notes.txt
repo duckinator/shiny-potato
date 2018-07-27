@@ -1,0 +1,19 @@
+# url -> container mapping
+/pluck  command-pluck
+/ua     command-ua
+/echo   command-echo
+
+# echo.rb container -> executable map
+GET  /echo          ./bin/echo.rb --text=:text
+
+# pluck.rb container -> executable map
+POST /pluck/:key    ./bin/pluck.rb
+
+-------
+
+GET /echo [text]          ./bin/echo.rb --text=:text
+GET /echo [text moretext] ./bin/echo.rb --text=:text --moretext=:moretext
+
+
+GET /echo [arg1 arg2 ...] ./bin/echo.rb --this-is-always-there
+
